@@ -3,10 +3,12 @@ const expect = require("chai").expect;
 
 describe("Employee", () => {
   it("should throw an error if no arg", async () => {
-    const dep = new Employee({}); // create new Employee, but don't set `name` attr value
+    const emp = new Employee({});
 
-    dep.validateSync((err) => {
+    emp.validateSync((err) => {
       expect(err.errors.firstName).to.exist;
+      expect(err.errors.lastName).to.exist;
+      expect(err.errors.department).to.exist;
     });
   });
   it('should throw an error if "firstName, lastName, department" is not a string', () => {
